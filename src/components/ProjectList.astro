@@ -1,0 +1,12 @@
+---
+import LinkArrow from './LinkArrow.astro';
+import { projects } from '../data/projects';
+const { limit = projects.length } = Astro.props;
+---
+<ul class="entries">
+  {projects.slice(0, limit).map(project => <li>
+    <div class="entry-heading"><h3><a href={project.url}>{project.name}</a></h3><span class="meta">{project.category}</span></div>
+    <p>{project.description}</p>
+    {'website' in project && <a class="small" href={project.website}>Website <LinkArrow /></a>}
+  </li>)}
+</ul>

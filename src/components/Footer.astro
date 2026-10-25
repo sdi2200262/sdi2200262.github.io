@@ -1,0 +1,10 @@
+---
+import { profile, href } from '../config';
+---
+<footer class="site-footer">
+  <nav aria-label="Footer">
+    <a href={profile.github}>GitHub</a>
+    <a href={href('rss.xml')} data-astro-reload>RSS</a>
+    <a href={href('llms.txt')} data-astro-reload>llms.txt</a>
+  </nav>
+</footer>

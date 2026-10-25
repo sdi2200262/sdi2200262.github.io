@@ -1,0 +1,11 @@
+---
+import LinkArrow from '../components/LinkArrow.astro';
+import Base from '../layouts/Base.astro';
+import ProjectList from '../components/ProjectList.astro';
+import { profile, pageIntros } from '../config';
+---
+<Base title="Projects" description={`Projects ${pageIntros.projects}`}>
+  <header class="index-heading"><h1>Projects</h1><p>{pageIntros.projects}</p></header>
+  <ProjectList />
+  <p class="afterword">More on <a href={profile.github}>GitHub <LinkArrow /></a>.</p>
+</Base>

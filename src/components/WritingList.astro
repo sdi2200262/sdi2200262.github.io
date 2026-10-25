@@ -1,0 +1,11 @@
+---
+import { publishedWriting } from '../data/writing';
+import { href, formatDate, emptyWriting } from '../config';
+const { limit = Infinity } = Astro.props;
+const posts = (await publishedWriting()).slice(0, limit);
+---
+{posts.length ? <ul class="entries">{posts.map(post => <li>
+  <div class="meta"><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time> · {post.data.kind}</div>
+  <h3><a href={href(`writing/${post.id}/`)}>{post.data.title}</a></h3>
+  <p>{post.data.description}</p>
+</li>)}</ul> : <p class="muted">{emptyWriting}</p>}

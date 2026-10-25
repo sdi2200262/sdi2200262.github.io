@@ -1,0 +1,34 @@
+---
+import LinkArrow from '../components/LinkArrow.astro';
+import Base from '../layouts/Base.astro';
+import ProjectList from '../components/ProjectList.astro';
+import Contact from '../components/Contact.astro';
+import ResearchList from '../components/ResearchList.astro';
+import WritingList from '../components/WritingList.astro';
+import PortraitOutline from '../components/drawn/PortraitOutline';
+import DrawnRule from '../components/DrawnRule.astro';
+import { profile, href, homeSections } from '../config';
+const components = { projects: ProjectList, research: ResearchList, writing: WritingList };
+---
+<Base>
+  <section class="intro" aria-labelledby="intro-name">
+    <div class="portrait-frame"><PortraitOutline client:load /><img class="portrait" src={href('images/cobuter-man.png')} alt="CobuterMan, a suited figure with a computer monitor for a head" width="550" height="512" fetchpriority="high" /></div>
+    <h1 id="intro-name">{profile.name}</h1>
+    <p>{profile.description}</p>
+    <Contact compact />
+  </section>
+  {homeSections.map((section, index) => {
+    const Content = components[section.id];
+    const props = section.id === 'projects' ? { limit: 4 } : section.id === 'writing' ? { limit: 3 } : {};
+    return <>
+      <DrawnRule variant={index} />
+      <section class="grid2 home-section" aria-labelledby={`${section.id}-label`}>
+        <div>
+          <h2 class="label" id={`${section.id}-label`}>{section.label}</h2>
+          <a class="small" href={href(section.path)}>{section.more} <LinkArrow /></a>
+        </div>
+        <Content {...props} />
+      </section>
+    </>;
+  })}
+</Base>

@@ -1,0 +1,29 @@
+---
+import { href, homeSections } from '../config';
+const current = Astro.url.pathname;
+const navigation = [...homeSections.map(section => [section.label, section.path]), ['CV', 'cv/']];
+---
+<header class="topbar">
+  <div class="wrap strip">
+    <a class="brand" href={href()} data-home-link aria-current={current === href() ? 'page' : undefined}>Home</a>
+    <nav aria-label="Main">
+      {navigation.map(([label, path]) => <a href={href(path)} aria-current={current.startsWith(href(path)) ? 'page' : undefined}>{label}</a>)}
+    </nav>
+  </div>
+</header>
+<script>
+  // Same threshold and Home behaviour as APM's book-page Header.
+  function updateHeader() {
+    document.querySelector('.topbar')?.classList.toggle('scrolled', window.scrollY > 4);
+  }
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  document.addEventListener('astro:page-load', updateHeader);
+  document.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('[data-home-link]');
+    if (!link || link.pathname !== location.pathname) return;
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }, { capture: true });
+  updateHeader();
+</script>

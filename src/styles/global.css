@@ -1,0 +1,211 @@
+@import '@fontsource/literata/latin-400.css';
+@import '@fontsource/literata/latin-400-italic.css';
+@import '@fontsource/literata/latin-600.css';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+
+/* Palette and book conventions adapted from ../apm-website/src/css/custom.css.
+   Gruvbox colours: https://github.com/morhetz/gruvbox (MIT/X11). */
+:root {
+  --apm-paper: #fbf1c7;
+  --apm-deep: #ebdbb2;
+  --apm-ink: #3c3836;
+  --apm-soft: #d5c4a1;
+  --apm-link: #1f7a74;
+  --apm-hover: #14524e;
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  --apm-paper: #282828;
+  --apm-deep: #3c3836;
+  --apm-ink: #ebdbb2;
+  --apm-soft: #504945;
+  --apm-link: #3aada5;
+  --apm-hover: #6fcfc8;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { font-size: 100%; scrollbar-width: none; background: var(--apm-paper); }
+html::-webkit-scrollbar { display: none; }
+body { margin: 0; }
+.site-shell { min-height: 100svh; display: flex; flex-direction: column; width: 100%; }
+.book { background: var(--apm-paper); color: var(--apm-ink); font: 18px/1.7 'Literata', Georgia, serif; }
+::selection { background: var(--apm-ink); color: var(--apm-paper); }
+a { color: var(--apm-link); text-decoration-thickness: 0.9px; text-underline-offset: 3.6px; }
+a:hover { color: var(--apm-hover); }
+:is(a, button):focus-visible { outline: 1.8px solid var(--apm-link); outline-offset: 4.5px; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3.6px; }
+button[hidden] { display: none; }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(2.1rem, 6vw, 3rem); font-weight: 400; line-height: 1.2; letter-spacing: -.035em; text-wrap: balance; }
+h2 { font-size: 1.4rem; font-weight: 600; line-height: 1.4; }
+h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.5; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 48px; }
+.brand { font-weight: 600; }
+main { flex: 1; width: 100%; padding-bottom: 88px; }
+.intro { display: flex; flex-direction: column; align-items: center; padding: 76px 0 64px; text-align: center; }
+.intro h1 { margin: 24px 0 16px; font-size: clamp(1.8rem, 4vw, 2.35rem); font-weight: 400; line-height: 1.3; letter-spacing: -.025em; }
+.intro > p { max-width: 420px; font-size: 17px; line-height: 1.7; text-wrap: balance; }
+.eyebrow { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 18px; }
+.grid2 { display: grid; grid-template-columns: 126px minmax(0, 1fr); gap: 40px; padding: 52px 0; border-top: 0.9px solid var(--apm-soft); }
+.label { font-size: 16px; margin-bottom: 10.8px; }
+.small { font-size: 14px; }
+.meta, .muted { color: color-mix(in srgb, var(--apm-ink) 78%, var(--apm-paper)); }
+.meta { font-size: 12px; }
+.entries { list-style: none; padding: 0; margin: 0; }
+.entries li + li { margin-top: 38px; }
+.entries p { font-size: 16px; line-height: 1.65; margin-top: 7.2px; max-width: 585px; }
+.entry-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 9px 18px; }
+.entry-heading .meta { flex-shrink: 0; }
+.page-heading { padding: 64.8px 0 39.6px; max-width: 630px; }
+.page-heading > p:last-child:not(.eyebrow) { margin-top: 21.6px; }
+.afterword { border-top: 0.9px solid var(--apm-soft); margin-top: 43.2px; padding-top: 21.6px; font-size: 15px; }
+.prose { max-width: 612px; overflow-wrap: anywhere; }
+.prose > * + * { margin-top: 21.6px; }
+.prose :is(h2, h3) { margin-top: 39.6px; }
+.prose :is(h2, h3) + * { margin-top: 14.4px; }
+.prose img { max-width: 100%; height: auto; }
+.prose blockquote { margin-left: 0; padding-left: 21.6px; border-left: 1.8px solid var(--apm-soft); }
+code { font: 85%/1.6 'JetBrains Mono', monospace; }
+:not(pre) > code { background: var(--apm-deep); padding: 1.8px 3.6px; }
+pre { padding: 18px; overflow-x: auto; border: 0.9px solid var(--apm-soft); }
+html[data-theme='dark'] .astro-code, html[data-theme='dark'] .astro-code span { color: var(--shiki-dark) !important; background-color: var(--shiki-dark-bg) !important; }
+.prose table { display: block; overflow-x: auto; border-collapse: collapse; }
+.prose :is(td, th) { border: 0.9px solid var(--apm-soft); padding: 7.2px 10.8px; text-align: left; }
+.comments { margin-top: 43.2px; padding-top: 28.8px; border-top: 0.9px solid var(--apm-soft); }
+.comments p { margin: 10.8px 0 21.6px; }
+
+.skip { position: absolute; top: -100px; padding: 7.2px 14.4px; background: var(--apm-paper); }
+.skip:focus { top: 7.2px; }
+@media (max-width: 576px) {
+  .wrap { padding: 0 28px; }
+  .intro { padding: 56px 0 48px; }
+  .grid2 { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 36px 0; }
+  .grid2 > div:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: 14.4px; }
+  .label { margin-bottom: 0; }
+  .entry-heading { display: block; }
+  .entry-heading .meta { display: block; margin-top: 3.6px; }
+  .page-heading { padding-top: 43.2px; }
+}
+@media print {
+  .book { background: white; color: black; font-size: 11pt; }
+  .topbar, .site-footer, .comments, .skip, .afterword { display: none; }
+  .wrap { max-width: none; padding: 0; }
+  a { color: inherit; }
+  .page-heading { padding-top: 0; }
+}
+
+/* The mount keeps its light paper in both themes; an isolated backdrop prevents the load fade from changing the image treatment. */
+.portrait-frame { position: relative; flex: none; width: 92px; padding: 7px; color: var(--apm-ink); isolation: isolate; }
+.portrait-outline { position: absolute; inset: -3px; width: calc(100% + 6px); height: calc(100% + 6px); pointer-events: none; }
+.portrait { position: relative; display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.index-heading { padding: 64px 0 40px; }
+.index-heading > p { max-width: 580px; margin-top: 18px; font-size: 17px; line-height: 1.7; }
+.index-heading h1 { font-size: 1.3rem; font-weight: 400; letter-spacing: 0; }
+html:not([data-navigated]) .site-shell { animation: apm-load .8s cubic-bezier(.4, 0, .2, 1); }
+@keyframes apm-load { from { opacity: 0; } }
+/* Page navigation uses the same fade curve as APM's initial load. */
+::view-transition-old(root) { animation: page-out .4s cubic-bezier(.4, 0, .2, 1) both; mix-blend-mode: plus-lighter; }
+::view-transition-new(root) { animation: apm-load .6s cubic-bezier(.4, 0, .2, 1) both; mix-blend-mode: plus-lighter; }
+@keyframes page-out { to { opacity: 0; } }
+/* Theme switches retain APM's slower cross-fade and exclude the dock. */
+@keyframes apm-out { 0%, 32% { opacity: 1; } 82%, 100% { opacity: 0; } }
+@keyframes apm-in { 0%, 32% { opacity: 0; } 82%, 100% { opacity: 1; } }
+html[data-theme-transition]::view-transition-old(root) { animation: apm-out .9s ease-in-out both; }
+html[data-theme-transition]::view-transition-new(root) { animation: apm-in .9s ease-in-out both; }
+::view-transition-group(apm-dock), ::view-transition-new(apm-dock) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(apm-dock) { display: none; }
+::view-transition { pointer-events: none; }
+
+/* Floating controls ported from the APM site. */
+.dock { position: fixed; z-index: 30; right: 12px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; align-items: flex-end; gap: 8px; transition: transform .45s cubic-bezier(.65, 0, .35, 1); view-transition-name: apm-dock; }
+.dock.away:not(:has(:focus-visible)) { transform: translateX(64px); }
+@media (any-hover: none) { .dock.away:not(:has(:focus-visible)) { transform: none; } } /* touch: no hover to bring it back, so it stays */
+/* Up button: same marker + thin icon as the switch; only there once the page is scrolled past 400px (.on). */
+.totop { position: relative; width: 38px; height: 38px; display: grid; place-items: center; appearance: none; margin: 0; padding: 0; border: 0; background: none; color: var(--apm-ink); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.totop.on { opacity: 1; pointer-events: auto; }
+.totop svg { position: relative; width: 20px; height: 20px; }
+.totop:focus-visible { outline: 2px solid var(--apm-link); outline-offset: 3px; }
+.pill { position: relative; width: 38px; height: 38px; overflow: hidden; transition: width .14s cubic-bezier(.4, 0, 1, 1); }
+/* Open on hover (pointer devices), keyboard focus, or .open (touch: toggled by tapping the selected icon). */
+.pill:has(:focus-visible), .pill.open { width: 76px; transition: width .3s cubic-bezier(.22, 1, .36, 1); }
+@media (any-hover: hover) { .pill:hover { width: 76px; transition: width .3s cubic-bezier(.22, 1, .36, 1); } }
+.track { position: absolute; top: 0; right: 0; width: 76px; height: 38px; } /* right-anchored: the closed pill shows the right (selected) slot */
+.ind { position: absolute; background: var(--apm-paper); border: 1px solid var(--apm-ink); transition: all .5s cubic-bezier(.34, 1.45, .55, 1), background-color .45s ease-in-out .35s, border-color .45s ease-in-out .35s; }
+.pill button { appearance: none; margin: 0; padding: 0; border: 0; background: none; cursor: pointer; position: absolute; top: 0; width: 38px; height: 38px; display: grid; place-items: center; color: var(--apm-ink); opacity: .45; transition: opacity .35s ease .08s, color .45s ease-in-out .35s; }
+.pill button:is([aria-pressed='true'], :hover) { opacity: 1; }
+.pill button:focus-visible { outline: none; }
+.pill svg { width: 20px; height: 20px; transform: scale(.88); transition: transform .45s cubic-bezier(.34, 1.45, .55, 1) .05s; }
+.pill button[aria-pressed='true'] svg { transform: scale(1); }
+
+
+.dock[hidden] { display: none; }
+.pill:has(:focus-visible) { outline: 2px solid var(--apm-link); outline-offset: 3px; }
+@media (max-width: 576px) {
+  .portrait-frame { width: 82px; }
+}
+@media (max-width: 380px) {
+  .portrait-frame { width: 78px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-shell, .dock, .dock *, ::view-transition-old(root), ::view-transition-new(root),
+  html[data-theme-transition]::view-transition-old(root), html[data-theme-transition]::view-transition-new(root) {
+    transition: none !important; animation: none !important;
+  }
+}
+@media print { .dock, .portrait-frame { display: none; } .site-shell { min-height: 0; } }
+
+.contact-details { margin: 0; font-size: 16px; }
+.contact-details > div { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.contact-details > div + div { margin-top: 12px; }
+.contact-details dt { min-width: 58px; }
+.contact-details dd { margin: 0; overflow-wrap: anywhere; }
+.entries h2 { font-size: 1.05rem; font-weight: 600; line-height: 1.5; }
+
+/* APM book-page rules, with its original styles. */
+.home-section { border-top: 0; padding-block: 72px; }
+.wave { display: flex; justify-content: center; min-height: 20px; padding-bottom: 48px; color: var(--apm-ink); }
+@media (max-width: 576px) {
+  .intro h1 { max-width: 300px; }
+  .intro > p { max-width: 280px; }
+}
+
+/* Contact stays with the introduction; the work sections have room to breathe. */
+.contact-compact { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 28px; margin-top: 26px; font-size: 14px; }
+.contact-compact > div { align-items: baseline; gap: 8px; }
+.contact-compact > div + div { margin-top: 0; }
+.contact-compact dt { min-width: 0; color: color-mix(in srgb, var(--apm-ink) 70%, var(--apm-paper)); }
+@media (max-width: 576px) {
+  .home-section { padding-block: 52px; }
+  .contact-compact { gap: 10px 20px; }
+}
+
+/* SVG link arrows keep the same line treatment on iOS and desktop. */
+.link-arrow { display: inline-block; width: .9em; height: .9em; vertical-align: -.1em; }
+
+/* Shared chrome: copied from APM's Header and Footer styles. */
+.strip { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 24px; min-height: 56px; font-size: 14px; }
+.strip nav { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 24px; }
+.book .strip a { color: var(--apm-ink); text-decoration: none; }
+.book .strip a:is(:hover, [aria-current='page']) { text-decoration: underline; }
+.topbar { position: sticky; top: 0; z-index: 20; background: var(--apm-paper); border-bottom: 1px solid transparent; transition: border-color .3s ease; }
+.topbar.scrolled { border-color: var(--apm-soft); }
+.site-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 24px; width: 100%; max-width: 1200px; min-height: 56px; margin: 0 auto; padding: 0 24px 24px; font-size: 14px; }
+.site-footer nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.site-footer nav a { color: var(--apm-ink); text-decoration: none; }
+.site-footer nav a:hover { color: var(--apm-ink); text-decoration: underline; }
+.site-footer span a { text-decoration: underline; text-underline-offset: 3px; }
+@media (min-width: 900px) { .site-footer { padding: 0 40px 24px; } }
+@media (max-width: 599px), (any-hover: none) {
+  .site-footer { flex-direction: column; justify-content: center; text-align: center; padding: 16px 24px; }
+  .site-footer nav { justify-content: center; }
+}
+
+/* APM's 1200px chrome column and responsive gutters, independent of the article column. */
+.topbar .wrap { max-width: 1200px; padding: 0 24px; }
+.site-footer { margin-top: auto; }
+@media (min-width: 900px) { .topbar .wrap { padding: 0 40px; } }
+@media (prefers-reduced-motion: reduce) { .topbar { transition: none; } }
+@media print { .topbar, .site-footer { display: none; } }
+
+.topbar, .site-footer { line-height: 1.6; }
+.book .strip a, .site-footer nav a { text-underline-offset: 3px; }

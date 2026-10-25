@@ -1,0 +1,12 @@
+---
+import LinkArrow from './LinkArrow.astro';
+import { research } from '../data/research';
+const { headingLevel: Heading = 'h3' } = Astro.props;
+---
+<ul class="entries">
+  <li>
+    <div class="entry-heading"><Heading><a href={research.url}>{research.title}</a></Heading><span class="meta">{research.kind}</span></div>
+    <p>{research.description}</p>
+    <a class="small" href={research.website}>Read the thesis on the APM website <LinkArrow /></a>
+  </li>
+</ul>

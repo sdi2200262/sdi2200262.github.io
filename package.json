@@ -1,0 +1,32 @@
+{
+  "name": "sdi2200262.github.io",
+  "version": "1.0.0",
+  "description": "Personal website for Konstantinos Chaidemenos: projects, research, and writing.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "type": "module",
+  "dependencies": {
+    "@astrojs/react": "^7.1.1",
+    "@astrojs/rss": "^4.0.19",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/literata": "^5.3.0",
+    "astro": "^7.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sanitize-html": "^2.18.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@types/sanitize-html": "^2.16.2",
+    "typescript": "^6.0.3"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22.23.4"
+  }
+}

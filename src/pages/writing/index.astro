@@ -1,0 +1,11 @@
+---
+import LinkArrow from '../../components/LinkArrow.astro';
+import Base from '../../layouts/Base.astro';
+import WritingList from '../../components/WritingList.astro';
+import { href, pageIntros } from '../../config';
+---
+<Base title="Writing" description={`Writing ${pageIntros.writing}`}>
+  <header class="index-heading"><h1>Writing</h1><p>{pageIntros.writing}</p></header>
+  <WritingList />
+  <p class="afterword"><a href={href('rss.xml')}>Subscribe via RSS <LinkArrow /></a></p>
+</Base>

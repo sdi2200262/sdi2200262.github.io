@@ -1,0 +1,32 @@
+---
+import { profile } from '../config';
+const { id } = Astro.props;
+---
+{profile.commentsRepo && <section class="comments" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">Discussion</h2>
+  <p class="small">Comments are stored as GitHub issues. A GitHub account is needed to comment.</p>
+  <div id="comments" data-repo={profile.commentsRepo} data-term={`writing/${id}`}>
+    <button id="load-comments" type="button">Load comments</button>
+  </div>
+  <noscript><p><a href={`https://github.com/${profile.commentsRepo}/issues`}>Read the discussion on GitHub</a>.</p></noscript>
+</section>}
+<script>
+  document.addEventListener('astro:page-load', () => {
+  const container = document.querySelector<HTMLElement>('#comments');
+  document.querySelector('#load-comments')?.addEventListener('click', () => {
+    if (!container) return;
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', container.dataset.repo!);
+    script.setAttribute('issue-term', container.dataset.term!);
+    script.setAttribute('theme', document.documentElement.dataset.theme === 'dark' ? 'gruvbox-dark' : 'gruvbox-light');
+    script.crossOrigin = 'anonymous';
+    script.async = true;
+    container.replaceChildren(script);
+  });
+  });
+  window.addEventListener('themechange', () => {
+    const frame = document.querySelector<HTMLIFrameElement>('.utterances-frame');
+    frame?.contentWindow?.postMessage({ type: 'set-theme', theme: document.documentElement.dataset.theme === 'dark' ? 'gruvbox-dark' : 'gruvbox-light' }, 'https://utteranc.es');
+  });
+</script>

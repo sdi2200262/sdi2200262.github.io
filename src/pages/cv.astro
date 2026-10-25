@@ -1,0 +1,12 @@
+---
+import LinkArrow from '../components/LinkArrow.astro';
+import Base from '../layouts/Base.astro';
+import { profile, href, cvPending } from '../config';
+---
+<Base title="CV">
+  <header class="index-heading"><h1>CV</h1></header>
+  <div class="prose">
+    {profile.cvFile ? <p><a href={href(profile.cvFile)}>Download my CV (PDF) <LinkArrow /></a></p> : <p>{cvPending}</p>}
+    <p>For now, you can browse my <a href={href('projects/')}>projects</a> and <a href={profile.github}>GitHub profile</a>.</p>
+  </div>
+</Base>

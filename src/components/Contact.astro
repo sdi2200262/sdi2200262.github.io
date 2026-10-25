@@ -1,0 +1,8 @@
+---
+import { profile } from '../config';
+const { compact = false } = Astro.props;
+---
+<dl class:list={['contact-details', { 'contact-compact': compact }]} aria-label="Contact">
+  <div><dt>Email</dt><dd><a href={`mailto:${profile.email}`}>{profile.email}</a></dd></div>
+  <div><dt>Discord</dt><dd>{profile.discord}</dd></div>
+</dl>

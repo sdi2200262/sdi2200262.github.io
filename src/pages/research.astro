@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import ResearchList from '../components/ResearchList.astro';
+import { pageIntros } from '../config';
+---
+<Base title="Research" description={`Research ${pageIntros.research}`}>
+  <header class="index-heading"><h1>Research</h1><p>{pageIntros.research}</p></header>
+  <ResearchList headingLevel="h2" />
+</Base>

@@ -1,0 +1,25 @@
+---
+import LinkArrow from '../../components/LinkArrow.astro';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Comments from '../../components/Comments.astro';
+import { publishedWriting } from '../../data/writing';
+import { href, formatDate } from '../../config';
+export async function getStaticPaths() {
+  return (await publishedWriting()).map(post => ({ params: { id: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<Base title={post.data.title} description={post.data.description}>
+  <article>
+    <header class="page-heading">
+      <p class="eyebrow">{post.data.kind} · <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time></p>
+      <h1>{post.data.title}</h1>
+      <p>{post.data.description}</p>
+    </header>
+    <div class="prose"><Content /></div>
+  </article>
+  {post.data.comments && <Comments id={post.id} />}
+  <p class="afterword"><a href={href('writing/')}><LinkArrow direction="left" /> All writing</a></p>
+</Base>
