@@ -1,7 +1,7 @@
 # Konstantinos Chaidemenos
 
 Personal website for my projects, research, and writing, hosted at
-[sdi2200262.github.io](https://sdi2200262.github.io/).
+[cobuterman.is-a.dev](https://cobuterman.is-a.dev/).
 
 Built with Astro. Posts are Markdown files; the build produces static HTML for
 GitHub Pages. The book styling, drawn rules, and floating controls follow the
@@ -100,22 +100,16 @@ Pushes to `main` run `.github/workflows/deploy.yml`: install from the lockfile,
 check the source, build, and deploy `dist/` to GitHub Pages. The workflow can also
 be run manually. Pages uses **GitHub Actions** as its publishing source.
 
-The default address is `https://sdi2200262.github.io/`. The profile README remains
-in the separate `sdi2200262/sdi2200262` repository.
+The site is hosted at [cobuterman.is-a.dev](https://cobuterman.is-a.dev/).
+The original GitHub Pages address redirects to this domain. The profile README
+remains in the separate `sdi2200262/sdi2200262` repository.
 
 ### Custom domain
 
-The intended domain is `cobuterman.is-a.dev`. Until registration is approved,
-the site uses its GitHub Pages address. The registry requires a human-submitted
-request; see its [registration guide](https://docs.is-a.dev/quickstart/) and
-[GitHub Pages guide](https://docs.is-a.dev/guides/github-pages/).
+The Pages custom domain is `cobuterman.is-a.dev`. Its registry entry points to
+`sdi2200262.github.io` through a CNAME record. GitHub Pages manages the HTTPS
+certificate.
 
-After approval:
-
-1. Set the Pages custom domain to `cobuterman.is-a.dev` and verify ownership.
-2. Set the repository Actions variable `SITE_URL` to `https://cobuterman.is-a.dev`.
-3. Leave `BASE_PATH` unset and run the deployment workflow again.
-4. Enable **Enforce HTTPS** when the certificate is ready.
-
-Updating `SITE_URL` also updates canonical links, RSS, and `llms.txt`. No domain
-switch or `CNAME` file is applied before approval.
+The repository Actions variable `SITE_URL` is `https://cobuterman.is-a.dev`;
+`BASE_PATH` remains unset. The same URL is the default in `astro.config.mjs`.
+Changing `SITE_URL` and deploying updates canonical links, RSS, and `llms.txt`.

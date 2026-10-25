@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   integrations: [react()],
-  site: process.env.SITE_URL || 'https://sdi2200262.github.io',
+  site: process.env.SITE_URL || 'https://cobuterman.is-a.dev',
   base: process.env.BASE_PATH || '/',
   devToolbar: { enabled: false },
   trailingSlash: 'always',
