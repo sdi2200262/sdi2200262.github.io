@@ -6,8 +6,7 @@ export const profile = {
   description: 'A place for my projects, research, and writing.',
   // Add a PDF under public/ and set this to its path, e.g. 'cv.pdf'.
   cvFile: '',
-  // Install https://github.com/apps/utterances on your public site repo first.
-  commentsRepo: '', // e.g. 'sdi2200262/sdi2200262.github.io'
+  commentsRepo: 'sdi2200262/sdi2200262.github.io',
 };
 export const href = (path = '') => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 export const formatDate = (date: Date) => new Intl.DateTimeFormat('en-GB', {
