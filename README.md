@@ -13,5 +13,6 @@ npm run build
 Posts live in `src/content/writing/`; set `draft: false` to publish.
 Edit `src/config.ts` for profile details and `src/data/` for projects and research.
 RSS includes full posts. Comments use Utterances and GitHub Issues.
+GitHub star counts use a saved snapshot, refreshed daily by Actions.
 
 Push to `main` to deploy.

@@ -1,0 +1,13 @@
+---
+import stars from '../data/stars.json';
+interface Props { url: string; name: string; }
+const { url, name } = Astro.props;
+const counts: Record<string, number> = stars;
+const count = counts[new URL(url).pathname.slice(1)];
+const formatted = count?.toLocaleString('en-US');
+---
+{count !== undefined && <a class="project-stars" href={`${url}/stargazers`} aria-label={`${formatted} GitHub stars for ${name}`} title="GitHub stars · updated daily">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="m12 3 2.8 5.7 6.3.9-4.6 4.4 1.1 6.3-5.6-3-5.6 3 1.1-6.3L3 9.6l6.2-.9Z" />
+  </svg>{formatted}
+</a>}

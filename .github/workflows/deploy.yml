@@ -2,6 +2,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '23 6 * * *'
   workflow_dispatch:
 permissions:
   contents: read
@@ -12,6 +14,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -19,6 +23,19 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - name: Refresh saved star counts
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: node scripts/update-stars.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Save changed counts
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          if ! git diff --quiet -- src/data/stars.json; then
+            git add src/data/stars.json
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore: refresh GitHub star counts'
+            git push
+          fi
       - run: npm ci
       - run: npm run check
       - run: npm run build
