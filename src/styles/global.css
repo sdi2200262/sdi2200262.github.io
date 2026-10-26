@@ -210,7 +210,5 @@ html[data-theme-transition]::view-transition-new(root) { animation: apm-in .9s e
 .topbar, .site-footer { line-height: 1.6; }
 .book .strip a, .site-footer nav a { text-underline-offset: 3px; }
 
-.project-stars { display: inline-flex; align-items: center; gap: 4px; margin-left: 12px; font-size: 12px; font-weight: 400; white-space: nowrap; vertical-align: middle; }
-.book a.project-stars { color: var(--apm-ink); text-decoration: none; opacity: .7; }
-.book a.project-stars:hover { opacity: 1; text-decoration: underline; }
+.project-stars { display: inline-flex; align-items: center; gap: 4px; margin-left: 12px; font-size: 13px; font-weight: 400; white-space: nowrap; vertical-align: middle; opacity: .75; user-select: none; }
 .project-stars svg { width: 13px; height: 13px; }
