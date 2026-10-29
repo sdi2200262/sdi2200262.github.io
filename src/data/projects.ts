@@ -14,9 +14,9 @@ export const projects = [
     "category": "Developer tool"
   },
   {
-    "name": "Simple Session Memory for Agents",
-    "description": "Simple conversation memory, context recovery, and archives for Claude Code and Codex.",
-    "url": "https://github.com/sdi2200262/simple-session-memory-for-agents",
+    "name": "Simple Conversation Memory for Agents",
+    "description": "Conversation memory for coding agents: one log per conversation, saved on request or through an established workflow.",
+    "url": "https://github.com/sdi2200262/simple-conversation-memory-for-agents",
     "category": "Developer tool"
   },
   {
