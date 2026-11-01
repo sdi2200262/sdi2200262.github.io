@@ -1,5 +1,5 @@
 import type { APIContext } from 'astro';
-import { profile, href, homeSections, pageIntros, emptyWriting, cvPending } from '../config';
+import { profile, href, homeSections, pageIntros, emptyWriting } from '../config';
 import { projects } from '../data/projects';
 import { research } from '../data/research';
 import { publishedWriting } from '../data/writing';
@@ -15,7 +15,6 @@ export async function GET({ site }: APIContext) {
 
 - [Home](${url('')}): Introduction, selected projects, research, writing, and contact details.
 ${homeSections.map(section => `- [${section.label}](${url(section.path)}): ${pageIntros[section.id]}`).join('\n')}
-- [CV](${url('cv/')}): ${profile.cvFile ? `Download the [CV PDF](${url(profile.cvFile)}).` : cvPending}
 - [RSS](${url('rss.xml')}): Full-text feed of published writing.
 
 ## Projects

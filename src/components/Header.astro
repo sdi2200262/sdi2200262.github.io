@@ -1,13 +1,12 @@
 ---
 import { href, homeSections } from '../config';
 const current = Astro.url.pathname;
-const navigation = [...homeSections.map(section => [section.label, section.path]), ['CV', 'cv/']];
 ---
 <header class="topbar">
   <div class="wrap strip">
     <a class="brand" href={href()} data-home-link aria-current={current === href() ? 'page' : undefined}>Home</a>
     <nav aria-label="Main">
-      {navigation.map(([label, path]) => <a href={href(path)} aria-current={current.startsWith(href(path)) ? 'page' : undefined}>{label}</a>)}
+      {homeSections.map(({ label, path }) => <a href={href(path)} aria-current={current.startsWith(href(path)) ? 'page' : undefined}>{label}</a>)}
     </nav>
   </div>
 </header>

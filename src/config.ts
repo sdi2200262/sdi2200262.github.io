@@ -4,8 +4,6 @@ export const profile = {
   email: 'haidemenoss@gmail.com',
   discord: 'cobuter_man',
   description: 'A place for my projects, research, and writing.',
-  // Add a PDF under public/ and set this to its path, e.g. 'cv.pdf'.
-  cvFile: '',
   commentsRepo: 'sdi2200262/sdi2200262.github.io',
 };
 export const href = (path = '') => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
@@ -27,4 +25,3 @@ export const pageIntros = {
   writing: 'on software, AI, and whatever else holds my attention.',
 };
 export const emptyWriting = 'No posts yet.';
-export const cvPending = 'My CV will be available here soon.';
