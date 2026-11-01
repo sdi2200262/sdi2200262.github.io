@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { rng } from './random';
-import { drawnSeed, pageSeed } from './seed';
+import { pageSeed } from './seed';
 
 // Hand-drawn rules for the book pages (landing, Research): section breaks and the small wave over a term's note,
 // all derived from the page-load seed. Styles: "Book pages" in src/css/custom.css.
@@ -60,7 +60,7 @@ const drawFrom = (seed, scope) => {
   };
 };
 export function useDraw(scope) {
-  const [seed, setSeed] = useState(drawnSeed);
+  const [seed, setSeed] = useState(null);
   useEffect(() => { if (!seed) setSeed(pageSeed()); }, [seed]);
   return seed ? drawFrom(seed, scope) : null;
 }
