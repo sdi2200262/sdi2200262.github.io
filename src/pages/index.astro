@@ -1,14 +1,10 @@
 ---
-import LinkArrow from '../components/LinkArrow.astro';
+import About from '../components/drawn/About';
 import Base from '../layouts/Base.astro';
-import ProjectList from '../components/ProjectList.astro';
 import Contact from '../components/Contact.astro';
-import ResearchList from '../components/ResearchList.astro';
-import WritingList from '../components/WritingList.astro';
 import PortraitOutline from '../components/drawn/PortraitOutline';
 import DrawnRule from '../components/DrawnRule.astro';
-import { profile, href, homeSections } from '../config';
-const components = { projects: ProjectList, research: ResearchList, writing: WritingList };
+import { profile, href } from '../config';
 ---
 <Base>
   <section class="intro" aria-labelledby="intro-name">
@@ -17,18 +13,9 @@ const components = { projects: ProjectList, research: ResearchList, writing: Wri
     <p>{profile.description}</p>
     <Contact compact />
   </section>
-  {homeSections.map((section, index) => {
-    const Content = components[section.id];
-    const props = section.id === 'projects' ? { limit: 4 } : section.id === 'writing' ? { limit: 3 } : {};
-    return <>
-      <DrawnRule variant={index} />
-      <section class="grid2 home-section" aria-labelledby={`${section.id}-label`}>
-        <div>
-          <h2 class="label" id={`${section.id}-label`}>{section.label}</h2>
-          <a class="small" href={href(section.path)}>{section.more} <LinkArrow /></a>
-        </div>
-        <Content {...props} />
-      </section>
-    </>;
-  })}
+  <DrawnRule variant={0} />
+  <section class="grid2 home-section" aria-labelledby="about-label">
+    <div><h2 class="label" id="about-label">About</h2></div>
+    <About client:load />
+  </section>
 </Base>

@@ -212,3 +212,13 @@ html[data-theme-transition]::view-transition-new(root) { animation: apm-in .9s e
 
 .project-stars { display: inline-flex; align-items: center; gap: 4px; margin-left: 12px; font-size: 13px; font-weight: 400; white-space: nowrap; vertical-align: middle; opacity: .75; user-select: none; }
 .project-stars svg { width: 13px; height: 13px; }
+
+/* Terms (src/components/drawn/Terms.jsx): dotted-underlined buttons whose note is a quiet line under the text,
+   ruled by a small calm wave. Ported from apm-website/src/css/custom.css. */
+.term { cursor: help; text-decoration: underline dotted 0.9px; text-underline-offset: 4px; }
+.term:is(:focus-visible, [aria-pressed='true']) { text-decoration-style: solid; }
+@media (any-hover: hover) { .term:hover { text-decoration-style: solid; } } /* touch :hover sticks after a tap */
+.prose > .note { margin-top: 28px; font-size: 15px; line-height: 1.5; transition: opacity .25s ease; }
+.note-wave { display: block; margin: 0 auto 8px; color: var(--apm-ink); opacity: .6; }
+@media (prefers-reduced-motion: reduce) { .note { transition: none; } }
+@media print { .note { display: none; } }

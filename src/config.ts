@@ -13,9 +13,9 @@ export const formatDate = (date: Date) => new Intl.DateTimeFormat('en-GB', {
 
 // Shared by the homepage and header so their order stays in sync.
 export const homeSections = [
-  { id: 'projects', label: 'Projects', path: 'projects/', more: 'All projects' },
-  { id: 'research', label: 'Research', path: 'research/', more: 'All research' },
-  { id: 'writing', label: 'Writing', path: 'writing/', more: 'All writing' },
+  { id: 'projects', label: 'Projects', path: 'projects/' },
+  { id: 'research', label: 'Research', path: 'research/' },
+  { id: 'writing', label: 'Writing', path: 'writing/' },
 ] as const;
 
 // Page copy is shared with RSS and llms.txt.
