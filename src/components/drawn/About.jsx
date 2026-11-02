@@ -42,7 +42,14 @@ export default function About() {
         my own work, and <a href={href('research/')}>research</a> I’ve authored or contributed to. I also publish my
         {' '}<a href={href('writing/')}>writing</a> on software, AI, and whatever else holds my attention.
       </p>
-      <Note id="about-note" active={!!active} wave={draw?.note}>{DEFS[last.current]}</Note>
+      {/* Every definition sits in one grid cell, so the note keeps the height of the longest and nothing shifts. */}
+      <Note id="about-note" active={!!active} wave={draw?.note}>
+        <span className="note-stack">
+          {Object.entries(DEFS).map(([key, text]) => (
+            <span key={key} style={{ visibility: key === last.current ? 'visible' : 'hidden' }}>{text}</span>
+          ))}
+        </span>
+      </Note>
     </div>
   );
 }

@@ -219,6 +219,8 @@ html[data-theme-transition]::view-transition-new(root) { animation: apm-in .9s e
 .term:is(:focus-visible, [aria-pressed='true']) { text-decoration-style: solid; }
 @media (any-hover: hover) { .term:hover { text-decoration-style: solid; } } /* touch :hover sticks after a tap */
 .prose > .note { margin-top: 28px; font-size: 15px; line-height: 1.5; transition: opacity .25s ease; }
+.note-stack { display: grid; }
+.note-stack > * { grid-area: 1 / 1; }
 .note-wave { display: block; margin: 0 auto 8px; color: var(--apm-ink); opacity: .6; }
 @media (prefers-reduced-motion: reduce) { .note { transition: none; } }
 @media print { .note { display: none; } }
