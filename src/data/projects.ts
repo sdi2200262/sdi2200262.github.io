@@ -9,7 +9,7 @@ export const projects = [
   },
   {
     "name": "Context Awareness for Agents",
-    "description": "Tells your agent how much of its context window it has used, with threshold reminders. For Claude Code and Codex.",
+    "description": "Tells your agent how much of its context window it has used, with threshold reminders.",
     "url": "https://github.com/sdi2200262/context-awareness-for-agents",
     "category": "Developer tool"
   },
